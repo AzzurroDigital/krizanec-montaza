@@ -1,0 +1,14 @@
+{
+  "name": "krizanec",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "krizanec-montaza.hr", "custom_domain": true },
+    { "pattern": "www.krizanec-montaza.hr", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}
