@@ -28,7 +28,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://krizanec-montaza.hr/#firma","name":"KRIŽANEC-MONTAŽA j.d.o.o.","alternateName":"Križanec montaža","description":"Assembly, dismantling and relocation of industrial machines and production lines. Croatia and the EU.","url":"https://krizanec-montaza.hr/","logo":"https://krizanec-montaza.hr/icon-512.png","image":"https://krizanec-montaza.hr/og.jpg","telephone":"+385989352201","email":"krizanec.montaza@gmail.com","vatID":"HR35738468211","foundingDate":"2014","address":{"@type":"PostalAddress","streetAddress":"Donja Višnjica 105 d","postalCode":"42255","addressLocality":"Donja Višnjica","addressCountry":"HR"},"areaServed":[{"@type":"Country","name":"Croatia"},{"@type":"Place","name":"European Union"}]},{"@type":"WebSite","@id":"https://krizanec-montaza.hr/#web","url":"https://krizanec-montaza.hr/","name":"KRIŽANEC-MONTAŽA","inLanguage":["hr","de","en"],"publisher":{"@id":"https://krizanec-montaza.hr/#firma"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://krizanec-montaza.hr/#firma","name":"KRIŽANEC-MONTAŽA j.d.o.o.","alternateName":"Križanec montaža","description":"Assembly, dismantling and relocation of industrial machines and production lines. Croatia and the EU.","url":"https://krizanec-montaza.hr/","logo":"https://krizanec-montaza.hr/icon-512.png","image":"https://krizanec-montaza.hr/og.jpg","telephone":"+385989352201","email":"krizanec.montaza@gmail.com","vatID":"HR35738468211","foundingDate":"2014","address":[{"@type":"PostalAddress","name":"Sjedište","streetAddress":"Donja Višnjica 105 d","postalCode":"42250","addressLocality":"Lepoglava","addressCountry":"HR"},{"@type":"PostalAddress","name":"Ured","streetAddress":"Trg hrvatskih ivanovaca 3","postalCode":"42240","addressLocality":"Ivanec","addressCountry":"HR"}],"areaServed":[{"@type":"Country","name":"Croatia"},{"@type":"Place","name":"European Union"}]},{"@type":"WebSite","@id":"https://krizanec-montaza.hr/#web","url":"https://krizanec-montaza.hr/","name":"KRIŽANEC-MONTAŽA","inLanguage":["hr","de","en"],"publisher":{"@id":"https://krizanec-montaza.hr/#firma"}}]}</script>
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0B0C0E">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0C0E">
 <meta name="color-scheme" content="light">
@@ -471,13 +471,15 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--navy);outline
      <div class="field"><label for="rok">Preferred date</label><input id="rok" type="text" placeholder="e.g. 11/2026"></div>
     </div>
     <div class="field"><label for="opis">Machines and scope</label><textarea id="opis" enterkeyhint="done"></textarea></div>
+    <input type="text" id="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
     <button class="btn p" type="submit">Send enquiry</button>
-    <p class="note">The form opens your email client with the enquiry filled in.</p>
+    <p class="note" role="status" aria-live="polite">Your enquiry goes straight to our inbox.</p>
    </form>
    <div class="reveal" style="--i:2">
     <a class="cl" href="tel:+385989352201"><b>Phone</b><span>+385 98 935 22 01</span></a>
     <a class="cl" href="mailto:krizanec.montaza@gmail.com"><b>E-mail</b><span>krizanec.montaza@gmail.com</span></a>
-    <div class="cl"><b>Address</b><span>Donja Višnjica 105 d<br>42255 Donja Višnjica</span></div>
+    <div class="cl"><b>Registered office</b><span>Donja Višnjica 105 d<br>42250 Lepoglava</span></div>
+    <div class="cl"><b>Office</b><span>Trg hrvatskih ivanovaca 3 (1st floor)<br>42240 Ivanec</span></div>
     <div class="cl"><b>Working hours</b><span>Mon — Fri, 08:00 — 16:00</span></div>
     <div class="cl"><b>OIB / VAT</b><span>HR35738468211</span></div>
    </div>
@@ -491,7 +493,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--navy);outline
   <div class="fgrid">
    <div><h4>KRIŽANEC-MONTAŽA j.d.o.o.</h4><p>Assembly, dismantling and relocation of industrial machines and production lines. Croatia and the EU.</p></div>
    <div><h4>Contact</h4><p><a href="tel:+385989352201">+385 98 935 22 01</a><br><a href="mailto:krizanec.montaza@gmail.com">krizanec.montaza@gmail.com</a></p></div>
-   <div><h4>Address</h4><p>Donja Višnjica 105 d<br>42255 Donja Višnjica<br>OIB HR35738468211</p></div>
+   <div><h4>Address</h4><p>Registered office: Donja Višnjica 105 d,<br>42250 Lepoglava<br>Office: Trg hrvatskih ivanovaca 3 (1st floor),<br>42240 Ivanec<br>OIB HR35738468211</p></div>
   </div>
   <div class="bigmark" aria-hidden="true">KRIŽANEC MONTAŽA</div>
   <p class="credit"><span>Built by</span> <a class="madeby" href="https://www.azzurrodigital.hr" target="_blank" rel="noopener" aria-label="Azzurro Digital"><img src="/azzurro-digital.png" alt="Azzurro Digital" width="640" height="169" loading="lazy" decoding="async"></a></p>
@@ -623,15 +625,51 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--navy);outline
   });
  });
 
- document.getElementById('upit').addEventListener('submit',function(e){
+ var form=document.getElementById('upit'), note=form.querySelector('.note'), send=form.querySelector('button[type=submit]');
+ var TO='krizanec.montaza@gmail.com';
+ var HR=['Tvrtka','Ime','E-mail','Telefon','Lokacija','Termin','Opis'];
+ var T={hr:{s:'Upit za montažu',f:HR,
+            ok:'Upit je poslan. Javljamo se s ponudom i mogućim terminom.',
+            need:'Upišite e-mail ili telefon kako bismo vam mogli odgovoriti.',
+            wait:'Šaljemo upit…',
+            fb:'Slanje nije uspjelo. Otvaramo vaš program za e-poštu s ispunjenim upitom.'},
+        de:{s:'Montageanfrage',f:['Firma','Name','E-Mail','Telefon','Einsatzort','Termin','Beschreibung'],
+            ok:'Anfrage gesendet. Wir melden uns mit Angebot und möglichem Termin.',
+            need:'Bitte E-Mail oder Telefon angeben, damit wir antworten können.',
+            wait:'Anfrage wird gesendet…',
+            fb:'Senden fehlgeschlagen. Wir öffnen Ihr E-Mail-Programm mit der ausgefüllten Anfrage.'},
+        en:{s:'Assembly enquiry',f:['Company','Name','Email','Phone','Site','Date','Description'],
+            ok:'Enquiry sent. We come back with a quote and a possible date.',
+            need:'Please add an email or phone number so we can reply.',
+            wait:'Sending…',
+            fb:'Sending failed. Opening your email client with the enquiry filled in.'}}[cur]||null;
+ if(!T) return;
+ function say(m){ note.textContent=m; }
+ form.addEventListener('submit',function(e){
   e.preventDefault();
   var g=function(id){var el=document.getElementById(id);return el?el.value.trim():''};
-  var T={hr:{s:'Upit za montažu',f:['Tvrtka','Ime','E-mail','Telefon','Lokacija','Termin','Opis']},
-         de:{s:'Montageanfrage',f:['Firma','Name','E-Mail','Telefon','Einsatzort','Termin','Beschreibung']},
-         en:{s:'Assembly enquiry',f:['Company','Name','Email','Phone','Site','Date','Description']}}[cur];
   var v=[g('tvrtka'),g('ime'),g('mail'),g('tel'),g('lok'),g('rok'),g('opis')];
-  var body=T.f.map(function(k,i){return v[i]?k+': '+v[i]:null}).filter(Boolean).join('\n');
-  window.location.href='mailto:krizanec.montaza@gmail.com?subject='+encodeURIComponent(T.s)+'&body='+encodeURIComponent(body);
+  if(g('web')){ form.reset(); say(T.ok); return; }            /* honeypot */
+  if(!v[2]&&!v[3]){ say(T.need); document.getElementById('mail').focus(); return; }
+  function viaMail(){
+   var body=T.f.map(function(k,i){return v[i]?k+': '+v[i]:null}).filter(Boolean).join('\n');
+   window.location.href='mailto:'+TO+'?subject='+encodeURIComponent(T.s)+'&body='+encodeURIComponent(body);
+  }
+  if(!window.fetch){ viaMail(); return; }
+  /* sent straight to the inbox; if the service is unreachable the visitor's mail client opens as before */
+  var data={_subject:'Upit za montažu'+(v[0]?' — '+v[0]:''),_template:'table',_captcha:'false','Jezik stranice':cur.toUpperCase()};
+  HR.forEach(function(k,i){ if(v[i]) data[k]=v[i]; });
+  if(v[2]) data._replyto=v[2];
+  var ctl=window.AbortController?new AbortController():null, timer=setTimeout(function(){ if(ctl) ctl.abort(); },12000);
+  send.disabled=true; say(T.wait);
+  fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data),signal:ctl?ctl.signal:undefined})
+   .then(function(r){ return r.json(); })
+   .then(function(j){
+    if(String(j&&j.success)!=='true'||/activ/i.test(String(j.message||''))) throw new Error('not delivered');
+    form.reset(); say(T.ok);
+   })
+   .catch(function(){ say(T.fb); viaMail(); })
+   .then(function(){ clearTimeout(timer); send.disabled=false; });
  });
 })();
 </script>

@@ -18,3 +18,8 @@ Nakon svake izmjene u `index.html`:
 pa commitati `index.html`, `de.html` i `en.html` zajedno. Naslov stranice, opisi, alt tekstovi
 i placeholderi prevode se u rječniku `STRINGS` na vrhu `build.py`; skripta staje s greškom ako
 se hrvatski izvornik promijenio, a prijevod nije.
+
+## Obrazac za upit
+
+Šalje se preko FormSubmita na krizanec.montaza@gmail.com. Ako slanje ne uspije, otvara se
+program za e-poštu posjetitelja s ispunjenim upitom.
