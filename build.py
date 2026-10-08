@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""Generira de.html i en.html iz index.html.
+"""Generira njemačke i engleske stranice iz hrvatskih izvornika.
 
-index.html je jedini izvor: hrvatski tekst stoji u elementima, a prijevodi u
+  index.html              ->  de.html, en.html
+  pravne-informacije.html ->  impressum.html, legal.html
+
+Hrvatski izvornik je jedini izvor: tekst stoji u elementima, a prijevodi u
 atributima data-de / data-en. Tekstovi koji nisu u elementima (naslov, opisi,
-alt, placeholder) prevode se u rječniku STRINGS ispod.
+alt, placeholder, poveznice) prevode se u rječnicima STRINGS / LEGAL_STRINGS.
 
 Pokretanje:  python3 build.py
 Skripta staje s greškom ako neki hrvatski izvorni tekst iz rječnika više ne
-postoji u index.html, da se prijevodi ne bi tiho razišli s izvornikom.
+postoji u izvorniku, da se prijevodi ne bi tiho razišli s njim.
 """
 import html
 import re
@@ -16,10 +19,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SITE = "https://krizanec-montaza.hr"
-URLS = {"hr": SITE + "/", "de": SITE + "/de", "en": SITE + "/en"}
 OG_LOCALE = {"hr": "hr_HR", "de": "de_DE", "en": "en_GB"}
 
-# Hrvatski izvornik -> prijevod. Svaki ključ mora postojati u index.html.
+# index.html: hrvatski izvornik -> prijevod. Svaki ključ mora postojati u izvorniku.
 STRINGS = {
     "de": {
         "<title>Montaža industrijskih strojeva — KRIŽANEC-MONTAŽA</title>":
@@ -34,6 +36,7 @@ STRINGS = {
             '"description":"Montage, Demontage und Verlagerung von Industriemaschinen und Produktionslinien. Kroatien und EU."',
         '{"@type":"Country","name":"Hrvatska"},{"@type":"Place","name":"Europska unija"}':
             '{"@type":"Country","name":"Kroatien"},{"@type":"Place","name":"Europäische Union"}',
+        'href="/pravne-informacije': 'href="/impressum',
         'placeholder="npr. Graz, AT"': 'placeholder="z. B. Graz, AT"',
         'placeholder="npr. 11/2026"': 'placeholder="z. B. 11/2026"',
         'alt="Montaža industrijskog stroja u proizvodnoj hali"':
@@ -76,6 +79,7 @@ STRINGS = {
             '"description":"Assembly, dismantling and relocation of industrial machines and production lines. Croatia and the EU."',
         '{"@type":"Country","name":"Hrvatska"},{"@type":"Place","name":"Europska unija"}':
             '{"@type":"Country","name":"Croatia"},{"@type":"Place","name":"European Union"}',
+        'href="/pravne-informacije': 'href="/legal',
         'placeholder="npr. Graz, AT"': 'placeholder="e.g. Graz, AT"',
         'placeholder="npr. 11/2026"': 'placeholder="e.g. 11/2026"',
         'alt="Montaža industrijskog stroja u proizvodnoj hali"':
@@ -107,6 +111,43 @@ STRINGS = {
     },
 }
 
+# pravne-informacije.html: hrvatski izvornik -> prijevod.
+LEGAL_STRINGS = {
+    "de": {
+        "<title>Pravne informacije — KRIŽANEC-MONTAŽA</title>":
+            "<title>Impressum und Datenschutz — KRIŽANEC-MONTAŽA</title>",
+        'content="Podaci o društvu KRIŽANEC-MONTAŽA j.d.o.o. i obavijest o zaštiti osobnih podataka."':
+            'content="Angaben zum Unternehmen KRIŽANEC-MONTAŽA j.d.o.o. und Hinweise zum Datenschutz."',
+        '<a class="logo" href="/">': '<a class="logo" href="/de">',
+        '<a class="home" href="/" ': '<a class="home" href="/de" ',
+    },
+    "en": {
+        "<title>Pravne informacije — KRIŽANEC-MONTAŽA</title>":
+            "<title>Legal notice and privacy — KRIŽANEC-MONTAŽA</title>",
+        'content="Podaci o društvu KRIŽANEC-MONTAŽA j.d.o.o. i obavijest o zaštiti osobnih podataka."':
+            'content="Company details of KRIŽANEC-MONTAŽA j.d.o.o. and privacy notice."',
+        '<a class="logo" href="/">': '<a class="logo" href="/en">',
+        '<a class="home" href="/" ': '<a class="home" href="/en" ',
+    },
+}
+
+PAGES = [
+    {
+        "source": "index.html",
+        "out": {"de": "de.html", "en": "en.html"},
+        "urls": {"hr": SITE + "/", "de": SITE + "/de", "en": SITE + "/en"},
+        "strings": STRINGS,
+        "home": True,  # ima Open Graph oznake i preusmjeravanje po jeziku
+    },
+    {
+        "source": "pravne-informacije.html",
+        "out": {"de": "impressum.html", "en": "legal.html"},
+        "urls": {"hr": SITE + "/pravne-informacije", "de": SITE + "/impressum", "en": SITE + "/legal"},
+        "strings": LEGAL_STRINGS,
+        "home": False,
+    },
+]
+
 # <tag ... data-hr="…" data-de="…" data-en="…">hrvatski tekst</tag>
 ELEMENT = re.compile(
     r'<(?P<tag>[a-z0-9]+)(?P<pre>[^<>]*?) data-hr="(?P<hr>[^"]*)" data-de="(?P<de>[^"]*)" data-en="(?P<en>[^"]*)"(?P<post>[^<>]*)>'
@@ -119,12 +160,14 @@ def fail(message):
     sys.exit("build.py: " + message)
 
 
-def build(source, lang):
+def build(source, lang, page):
     out = source
+    urls = page["urls"]
+    name = page["source"]
 
-    for old, new in STRINGS[lang].items():
+    for old, new in page["strings"][lang].items():
         if out.count(old) < 1:
-            fail(f"[{lang}] izvorni tekst nije pronađen u index.html: {old[:70]}…")
+            fail(f"[{name} {lang}] izvorni tekst nije pronađen: {old[:70]}…")
         out = out.replace(old, new)
 
     def swap(match):
@@ -135,30 +178,32 @@ def build(source, lang):
     out, swapped = ELEMENT.subn(swap, out)
     expected = source.count(' data-hr="')
     if swapped != expected or " data-hr=" in out or " data-de=" in out or " data-en=" in out:
-        fail(f"[{lang}] zamijenjeno {swapped} od {expected} prevedenih elemenata; provjeriti redoslijed atributa data-hr/data-de/data-en")
-
-    # samo početna (hrvatska) stranica preusmjerava po spremljenom izboru jezika
-    out, n = re.subn(r"<!--hr-only-->.*?<!--/hr-only-->\n?", "", out, flags=re.S)
-    if n != 1:
-        fail("oznaka <!--hr-only--> nije pronađena")
+        fail(f"[{name} {lang}] zamijenjeno {swapped} od {expected} prevedenih elemenata; provjeriti redoslijed atributa data-hr/data-de/data-en")
 
     head = [
         ('<html lang="hr">', f'<html lang="{lang}">'),
-        (f'<link rel="canonical" href="{URLS["hr"]}">', f'<link rel="canonical" href="{URLS[lang]}">'),
-        (f'<meta property="og:url" content="{URLS["hr"]}">', f'<meta property="og:url" content="{URLS[lang]}">'),
-        ('<meta property="og:locale" content="hr_HR">', f'<meta property="og:locale" content="{OG_LOCALE[lang]}">'),
-        (f'<meta property="og:locale:alternate" content="{OG_LOCALE[lang]}">', '<meta property="og:locale:alternate" content="hr_HR">'),
+        (f'<link rel="canonical" href="{urls["hr"]}">', f'<link rel="canonical" href="{urls[lang]}">'),
         ('data-lang="hr" aria-current="page"', 'data-lang="hr"'),
         (f'data-lang="{lang}"', f'data-lang="{lang}" aria-current="page"'),
     ]
+    if page["home"]:
+        # samo početna (hrvatska) stranica preusmjerava po spremljenom izboru jezika
+        out, n = re.subn(r"<!--hr-only-->.*?<!--/hr-only-->\n?", "", out, flags=re.S)
+        if n != 1:
+            fail("oznaka <!--hr-only--> nije pronađena")
+        head += [
+            (f'<meta property="og:url" content="{urls["hr"]}">', f'<meta property="og:url" content="{urls[lang]}">'),
+            ('<meta property="og:locale" content="hr_HR">', f'<meta property="og:locale" content="{OG_LOCALE[lang]}">'),
+            (f'<meta property="og:locale:alternate" content="{OG_LOCALE[lang]}">', '<meta property="og:locale:alternate" content="hr_HR">'),
+        ]
     for old, new in head:
         if out.count(old) != 1:
-            fail(f"[{lang}] očekivan točno jedan: {old}")
+            fail(f"[{name} {lang}] očekivan točno jedan: {old}")
         out = out.replace(old, new)
 
     out, n = re.subn(
         r"<!-- IZVOR.*?-->",
-        "<!-- GENERIRANO iz index.html skriptom build.py — ne uređivati ručno. -->",
+        f"<!-- GENERIRANO iz {name} skriptom build.py — ne uređivati ručno. -->",
         out,
         count=1,
         flags=re.S,
@@ -169,11 +214,12 @@ def build(source, lang):
 
 
 def main():
-    source = (ROOT / "index.html").read_text(encoding="utf-8")
-    for lang in ("de", "en"):
-        page = build(source, lang)
-        (ROOT / f"{lang}.html").write_text(page, encoding="utf-8")
-        print(f"{lang}.html  {len(page.encode('utf-8'))} B")
+    for page in PAGES:
+        source = (ROOT / page["source"]).read_text(encoding="utf-8")
+        for lang, target in page["out"].items():
+            html_out = build(source, lang, page)
+            (ROOT / target).write_text(html_out, encoding="utf-8")
+            print(f"{target:<16} {len(html_out.encode('utf-8'))} B")
 
 
 if __name__ == "__main__":

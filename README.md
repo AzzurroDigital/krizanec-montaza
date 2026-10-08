@@ -8,14 +8,19 @@ Svaki commit na `main` ide live. Izrada: Azzurro Digital.
 
 ## Uređivanje teksta
 
-`index.html` je jedini izvor. Hrvatski tekst stoji u elementima, a prijevodi u atributima
-`data-de` / `data-en` na istom elementu. `de.html` i `en.html` se generiraju i ne uređuju se ručno.
+Uređuju se samo hrvatski izvornici. Hrvatski tekst stoji u elementima, a prijevodi u atributima
+`data-de` / `data-en` na istom elementu. Njemačke i engleske stranice se generiraju i ne uređuju se ručno.
 
-Nakon svake izmjene u `index.html`:
+| Izvornik | Generira se | Adrese |
+|---|---|---|
+| `index.html` | `de.html`, `en.html` | `/`, `/de`, `/en` |
+| `pravne-informacije.html` | `impressum.html`, `legal.html` | `/pravne-informacije`, `/impressum`, `/legal` |
+
+Nakon svake izmjene izvornika:
 
     python3 build.py
 
-pa commitati `index.html`, `de.html` i `en.html` zajedno. Naslov stranice, opisi, alt tekstovi
+pa commitati izvornik i generirane stranice zajedno. Naslov stranice, opisi, alt tekstovi
 i placeholderi prevode se u rječniku `STRINGS` na vrhu `build.py`; skripta staje s greškom ako
 se hrvatski izvornik promijenio, a prijevod nije.
 

@@ -275,6 +275,10 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--navy);outline
  .langs a:hover{color:var(--navy)}
  .langs a[aria-current=page]:hover{color:#fff}
  .madeby:hover img{opacity:1}
+.credit .legal{margin-left:auto;color:var(--sky);font-size:inherit;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+.credit .legal:hover{color:#fff}
+.note+.note{margin-top:6px}
+.note a{text-decoration:underline;text-underline-offset:3px}
  figure:hover img{transform:scale(1.05)}
  .row:hover .idx{color:#fff}
  .sec:not(.dark) .row:hover .idx{color:var(--ink)}
@@ -474,6 +478,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--navy);outline
     <input type="text" id="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
     <button class="btn p" type="submit">Send enquiry</button>
     <p class="note" role="status" aria-live="polite">Your enquiry goes straight to our inbox.</p>
+    <p class="note"><a href="/legal#privatnost">How we handle your data</a></p>
    </form>
    <div class="reveal" style="--i:2">
     <a class="cl" href="tel:+385989352201"><b>Phone</b><span>+385 98 935 22 01</span></a>
@@ -496,7 +501,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--navy);outline
    <div><h4>Address</h4><p>Registered office: Donja Višnjica 105 d,<br>42250 Lepoglava<br>Office: Trg hrvatskih ivanovaca 3 (1st floor),<br>42240 Ivanec<br>OIB HR35738468211</p></div>
   </div>
   <div class="bigmark" aria-hidden="true">KRIŽANEC MONTAŽA</div>
-  <p class="credit"><span>Built by</span> <a class="madeby" href="https://www.azzurrodigital.hr" target="_blank" rel="noopener" aria-label="Azzurro Digital"><img src="/azzurro-digital.png" alt="Azzurro Digital" width="640" height="169" loading="lazy" decoding="async"></a></p>
+  <p class="credit"><span>Built by</span> <a class="madeby" href="https://www.azzurrodigital.hr" target="_blank" rel="noopener" aria-label="Azzurro Digital"><img src="/azzurro-digital.png" alt="Azzurro Digital" width="640" height="169" loading="lazy" decoding="async"></a> <a class="legal" href="/legal">Legal notice and privacy</a></p>
  </div>
 </footer>
 
