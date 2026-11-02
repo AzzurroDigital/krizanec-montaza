@@ -169,6 +169,10 @@ header.sm .logo small{opacity:0;max-height:0;margin-top:0}
 .shots.pair figure:last-child img{aspect-ratio:4/5}
 .shots.duo figure{grid-column:auto}
 .shots.duo figure img{aspect-ratio:3/4}
+.strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:18px;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.strip figure{flex:0 0 78%;scroll-snap-align:start}
+.strip figure img{aspect-ratio:4/3;height:100%}
+@media(min-width:720px){.strip figure{flex-basis:calc((100% - 20px)/3)}}
 .proj{margin-top:clamp(44px,5.5vw,76px)}
 .proj:first-of-type{margin-top:clamp(34px,4vw,56px)}
 .proj .shots{margin-top:18px}
@@ -378,33 +382,203 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--navy);outline
   <span class="mono acc reveal" data-hr="Projekti" data-de="Projekte" data-en="Projects">Projekti</span>
   <h2 class="reveal split" style="margin-top:16px" data-hr="S naših montaža" data-de="Von unseren Montagen" data-en="From our jobs">S naših montaža</h2>
   <div class="proj">
-   <div class="projhead reveal"><h3 data-hr="Godišnje održavanje" data-de="Jährliche Wartung" data-en="Annual maintenance">Godišnje održavanje</h3><span class="mono">Mercedes-Benz Werk Mannheim · 2025</span></div>
-   <div class="shots pair">
-    <figure class="reveal"><img src="mannheim-3.webp" alt="Valjkasti transporter s pneumatskim cilindrima i lančanim pogonom" width="1350" height="900" loading="lazy" decoding="async"></figure>
-    <figure class="reveal" style="--i:1"><img src="mannheim-1.webp" alt="Motor s dijelovima obojenima u različite boje, na transportnom postolju" width="1050" height="1400" loading="lazy" decoding="async"></figure>
-   </div>
-  </div>
-  <div class="proj">
-   <div class="projhead reveal"><h3>Mercedes-Benz Werk 2/1</h3><span class="mono">Rastatt</span></div>
-   <div class="shots wide">
-    <figure class="reveal"><img src="rastatt-1.webp" alt="Hala s nizom industrijskih robota na postoljima tijekom montaže linije" width="1600" height="900" loading="lazy" decoding="async"></figure>
-    <figure class="reveal" style="--i:1"><img src="rastatt-2.webp" alt="Vertikalni podizač sa žutom nosivom platformom u proizvodnoj hali" width="900" height="1200" loading="lazy" decoding="async"></figure>
-    <figure class="reveal" style="--i:2"><img src="rastatt-3.webp" alt="Stezna naprava na stupovima usidrenima u pod hale" width="900" height="1200" loading="lazy" decoding="async"></figure>
+   <div class="projhead reveal"><h3 data-hr="Godišnje održavanje" data-de="Jährliche Wartung" data-en="Annual maintenance">Godišnje održavanje</h3><span class="mono">Mercedes-Benz Mannheim · 2025</span></div>
+   <div class="strip">
+    <figure><img src="albumi/01-1.webp" alt="Mercedes-Benz Mannheim · 2025 1" width="1000" height="563" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/01-2.webp" alt="Mercedes-Benz Mannheim · 2025 2" width="562" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/01-3.webp" alt="Mercedes-Benz Mannheim · 2025 3" width="562" height="1000" loading="lazy" decoding="async"></figure>
    </div>
   </div>
   <div class="proj">
    <div class="projhead reveal"><h3 data-hr="Montaža solarnih panela" data-de="Installation von Sonnenkollektoren" data-en="Solar panel installation">Montaža solarnih panela</h3></div>
-   <div class="shots">
-    <figure class="reveal"><img src="solar-1.webp" alt="Dvojica montera s pojasevima postavljaju solarne panele na krov hale" width="900" height="1200" loading="lazy" decoding="async"></figure>
-    <figure class="reveal" style="--i:1"><img src="solar-2.webp" alt="Postavljeni solarni paneli na krovu zgrade" width="900" height="1200" loading="lazy" decoding="async"></figure>
-    <figure class="reveal" style="--i:2"><img src="solar-3.webp" alt="Tehnički kanal s cijevima i kabelskim policama" width="900" height="1200" loading="lazy" decoding="async"></figure>
+   <div class="strip">
+    <figure><img src="albumi/02-1.webp" alt="Montaža solarnih panela 1" width="563" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/02-2.webp" alt="Montaža solarnih panela 2" width="563" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/02-3.webp" alt="Montaža solarnih panela 3" width="1000" height="563" loading="lazy" decoding="async"></figure>
    </div>
   </div>
   <div class="proj">
-   <div class="projhead reveal"><h3 data-hr="Ostale montaže" data-de="Weitere Montagen" data-en="Other jobs">Ostale montaže</h3></div>
-   <div class="shots duo">
-    <figure class="reveal"><img src="projekt-2.webp" alt="Monter Križanec-montaže radi akumulatorskim alatom unutar čelične konstrukcije" width="900" height="1200" loading="lazy" decoding="async"><figcaption data-hr="Mehanička montaža" data-de="Mechanische Montage" data-en="Mechanical assembly">Mehanička montaža</figcaption></figure>
-    <figure class="reveal" style="--i:1"><img src="projekt-1.webp" alt="Ekipa Križanec-montaže postavlja lančanu transportnu liniju u proizvodnoj hali" width="900" height="1200" loading="lazy" decoding="async"><figcaption data-hr="Montaža transportne linije" data-de="Montage einer Förderanlage" data-en="Conveyor line installation">Montaža transportne linije</figcaption></figure>
+   <div class="projhead reveal"><h3 data-hr="Montaža podizne dizalice (heber)" data-de="Montage eines Hebers" data-en="Lift installation">Montaža podizne dizalice (heber)</h3><span class="mono">Mercedes-Benz Rastatt</span></div>
+   <div class="strip">
+    <figure><img src="albumi/03-1.webp" alt="Mercedes-Benz Rastatt 1" width="562" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/03-2.webp" alt="Mercedes-Benz Rastatt 2" width="562" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/03-3.webp" alt="Mercedes-Benz Rastatt 3" width="1000" height="563" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/03-4.webp" alt="Mercedes-Benz Rastatt 4" width="562" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/03-5.webp" alt="Mercedes-Benz Rastatt 5" width="562" height="1000" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Montaža postrojenja" data-de="Anlagenmontage" data-en="Plant installation">Montaža postrojenja</h3><span class="mono">John Deere · Bruchsal</span></div>
+   <div class="strip">
+    <figure><img src="albumi/04-1.webp" alt="John Deere · Bruchsal 1" width="1000" height="563" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/04-2.webp" alt="John Deere · Bruchsal 2" width="1000" height="563" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/04-3.webp" alt="John Deere · Bruchsal 3" width="562" height="1000" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Montaža zračnih kanala" data-de="Montage von Luftkanälen" data-en="Air duct installation">Montaža zračnih kanala</h3><span class="mono">Maschinenfabrik Hercules</span></div>
+   <div class="strip">
+    <figure><img src="albumi/05-1.webp" alt="Maschinenfabrik Hercules 1" width="1000" height="563" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/05-2.webp" alt="Maschinenfabrik Hercules 2" width="562" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/05-3.webp" alt="Maschinenfabrik Hercules 3" width="1000" height="563" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/05-4.webp" alt="Maschinenfabrik Hercules 4" width="1000" height="563" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Montaža proizvodne linije" data-de="Montage einer Produktionslinie" data-en="Production line installation">Montaža proizvodne linije</h3><span class="mono">Mercedes-Benz Sindelfingen</span></div>
+   <div class="strip">
+    <figure><img src="albumi/06-1.webp" alt="Mercedes-Benz Sindelfingen 1" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/06-2.webp" alt="Mercedes-Benz Sindelfingen 2" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/06-3.webp" alt="Mercedes-Benz Sindelfingen 3" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/06-4.webp" alt="Mercedes-Benz Sindelfingen 4" width="750" height="1000" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Montaža postrojenja" data-de="Anlagenmontage" data-en="Plant installation">Montaža postrojenja</h3><span class="mono">Cummins Clean Fuel Technologies · Roanoke, Texas, USA</span></div>
+   <div class="strip">
+    <figure><img src="albumi/07-1.webp" alt="Cummins Clean Fuel Technologies · Roanoke, Texas, USA 1" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/07-2.webp" alt="Cummins Clean Fuel Technologies · Roanoke, Texas, USA 2" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/07-3.webp" alt="Cummins Clean Fuel Technologies · Roanoke, Texas, USA 3" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/07-4.webp" alt="Cummins Clean Fuel Technologies · Roanoke, Texas, USA 4" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/07-5.webp" alt="Cummins Clean Fuel Technologies · Roanoke, Texas, USA 5" width="750" height="1000" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Montaža proizvodnih linija" data-de="Montage von Produktionslinien" data-en="Production line installation">Montaža proizvodnih linija</h3><span class="mono">BMW Dingolfing · Leipzig</span></div>
+   <div class="strip">
+    <figure><img src="albumi/08-1.webp" alt="BMW Dingolfing · Leipzig 1" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/08-2.webp" alt="BMW Dingolfing · Leipzig 2" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/08-3.webp" alt="BMW Dingolfing · Leipzig 3" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/08-4.webp" alt="BMW Dingolfing · Leipzig 4" width="563" height="1000" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Montaža, kabliranje i isporuka transportnog vozila" data-de="Montage, Verkabelung und Auslieferung eines Transportfahrzeugs" data-en="Assembly, wiring and delivery of a transport vehicle">Montaža, kabliranje i isporuka transportnog vozila</h3><span class="mono">Čakovec</span></div>
+   <div class="strip">
+    <figure><img src="albumi/09-1.webp" alt="Čakovec 1" width="960" height="550" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/09-2.webp" alt="Čakovec 2" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/09-3.webp" alt="Čakovec 3" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/09-4.webp" alt="Čakovec 4" width="750" height="1000" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Postrojenje za reciklažu otpada" data-de="Recyclinganlage" data-en="Waste recycling plant">Postrojenje za reciklažu otpada</h3><span class="mono">Finska</span></div>
+   <div class="strip">
+    <figure><img src="albumi/10-1.webp" alt="Finska 1" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/10-2.webp" alt="Finska 2" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/10-3.webp" alt="Finska 3" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/10-4.webp" alt="Finska 4" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/10-5.webp" alt="Finska 5" width="750" height="1000" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Postrojenje za obradu otpada" data-de="Abfallbehandlungsanlage" data-en="Waste treatment plant">Postrojenje za obradu otpada</h3><span class="mono">Ekoflor · Zaprešić</span></div>
+   <div class="strip">
+    <figure><img src="albumi/11-1.webp" alt="Ekoflor · Zaprešić 1" width="1000" height="563" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/11-2.webp" alt="Ekoflor · Zaprešić 2" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/11-3.webp" alt="Ekoflor · Zaprešić 3" width="1000" height="563" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/11-4.webp" alt="Ekoflor · Zaprešić 4" width="563" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/11-5.webp" alt="Ekoflor · Zaprešić 5" width="563" height="1000" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Montaža logističkog sustava" data-de="Montage einer Logistikanlage" data-en="Logistics system installation">Montaža logističkog sustava</h3><span class="mono">Tchibo · Cheb, CZ</span></div>
+   <div class="strip">
+    <figure><img src="albumi/12-1.webp" alt="Tchibo · Cheb, CZ 1" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/12-2.webp" alt="Tchibo · Cheb, CZ 2" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/12-3.webp" alt="Tchibo · Cheb, CZ 3" width="461" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/12-4.webp" alt="Tchibo · Cheb, CZ 4" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/12-5.webp" alt="Tchibo · Cheb, CZ 5" width="1000" height="750" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Demontaža transportnih linija" data-de="Demontage von Förderlinien" data-en="Dismantling of conveyor lines">Demontaža transportnih linija</h3><span class="mono">Venlo, NL</span></div>
+   <div class="strip">
+    <figure><img src="albumi/13-1.webp" alt="Venlo, NL 1" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/13-2.webp" alt="Venlo, NL 2" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/13-3.webp" alt="Venlo, NL 3" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/13-4.webp" alt="Venlo, NL 4" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/13-5.webp" alt="Venlo, NL 5" width="1000" height="563" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Servis" data-de="Service" data-en="Service">Servis</h3><span class="mono">Müller · Ulm</span></div>
+   <div class="strip">
+    <figure><img src="albumi/14-1.webp" alt="Müller · Ulm 1" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/14-2.webp" alt="Müller · Ulm 2" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/14-3.webp" alt="Müller · Ulm 3" width="1000" height="750" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Montaža zračnih kanala" data-de="Montage von Luftkanälen" data-en="Air duct installation">Montaža zračnih kanala</h3><span class="mono">Papenburg, DE</span></div>
+   <div class="strip">
+    <figure><img src="albumi/15-1.webp" alt="Papenburg, DE 1" width="1000" height="750" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/15-2.webp" alt="Papenburg, DE 2" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/15-3.webp" alt="Papenburg, DE 3" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/15-4.webp" alt="Papenburg, DE 4" width="1000" height="750" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Logistički centar" data-de="Logistikzentrum" data-en="Logistics centre">Logistički centar</h3><span class="mono">Cainiao (AliExpress) · Paris</span></div>
+   <div class="strip">
+    <figure><img src="albumi/16-1.webp" alt="Cainiao (AliExpress) · Paris 1" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/16-2.webp" alt="Cainiao (AliExpress) · Paris 2" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/16-3.webp" alt="Cainiao (AliExpress) · Paris 3" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/16-4.webp" alt="Cainiao (AliExpress) · Paris 4" width="960" height="720" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Logistički centar" data-de="Logistikzentrum" data-en="Logistics centre">Logistički centar</h3><span class="mono">Amazon · Mollet del Vallès, ES</span></div>
+   <div class="strip">
+    <figure><img src="albumi/17-1.webp" alt="Amazon · Mollet del Vallès, ES 1" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/17-2.webp" alt="Amazon · Mollet del Vallès, ES 2" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/17-3.webp" alt="Amazon · Mollet del Vallès, ES 3" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/17-4.webp" alt="Amazon · Mollet del Vallès, ES 4" width="720" height="960" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Gradnja hale" data-de="Hallenbau" data-en="Hall construction">Gradnja hale</h3><span class="mono">Weimar</span></div>
+   <div class="strip">
+    <figure><img src="albumi/18-1.webp" alt="Weimar 1" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/18-2.webp" alt="Weimar 2" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/18-3.webp" alt="Weimar 3" width="960" height="720" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/18-4.webp" alt="Weimar 4" width="960" height="720" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Logistički centar" data-de="Logistikzentrum" data-en="Logistics centre">Logistički centar</h3><span class="mono">Amazon · Murcia, ES</span></div>
+   <div class="strip">
+    <figure><img src="albumi/19-1.webp" alt="Amazon · Murcia, ES 1" width="960" height="720" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/19-2.webp" alt="Amazon · Murcia, ES 2" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/19-3.webp" alt="Amazon · Murcia, ES 3" width="960" height="720" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/19-4.webp" alt="Amazon · Murcia, ES 4" width="960" height="720" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Lakirne kabine" data-de="Lackierkabinen" data-en="Paint booths">Lakirne kabine</h3><span class="mono">Blowtherm</span></div>
+   <div class="strip">
+    <figure><img src="albumi/20-1.webp" alt="Blowtherm 1" width="960" height="720" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/20-2.webp" alt="Blowtherm 2" width="960" height="720" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/20-3.webp" alt="Blowtherm 3" width="720" height="960" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Automehaničarska radionica" data-de="Kfz-Werkstatt" data-en="Car repair workshop">Automehaničarska radionica</h3><span class="mono">Auto Križanec · Donja Višnjica</span></div>
+   <div class="strip">
+    <figure><img src="albumi/21-1.webp" alt="Auto Križanec · Donja Višnjica 1" width="960" height="720" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/21-2.webp" alt="Auto Križanec · Donja Višnjica 2" width="960" height="720" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/21-3.webp" alt="Auto Križanec · Donja Višnjica 3" width="960" height="720" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/21-4.webp" alt="Auto Križanec · Donja Višnjica 4" width="960" height="720" loading="lazy" decoding="async"></figure>
+   </div>
+  </div>
+  <div class="proj">
+   <div class="projhead reveal"><h3 data-hr="Lakirna kabina" data-de="Lackierkabine" data-en="Paint booth">Lakirna kabina</h3><span class="mono">Augsburg</span></div>
+   <div class="strip">
+    <figure><img src="albumi/22-1.webp" alt="Augsburg 1" width="960" height="720" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/22-2.webp" alt="Augsburg 2" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/22-3.webp" alt="Augsburg 3" width="960" height="720" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/22-4.webp" alt="Augsburg 4" width="720" height="960" loading="lazy" decoding="async"></figure>
+    <figure><img src="albumi/22-5.webp" alt="Augsburg 5" width="960" height="720" loading="lazy" decoding="async"></figure>
    </div>
   </div>
  </div>
